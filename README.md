@@ -25,13 +25,17 @@ Guess what? It's build with REACT!
 - [ ] Backend integration.
 - [ ] Share to-do with share permissions.
 - [ ] More to-do data;
-  - [ ] Location,
+  - [ ] Locations with labels (Map integration),
   - [ ] Related person,
   - [ ] Reminders,
+  - [ ] Alarms,
   - [ ] Tags,
   - [ ] Categories,
   - [ ] Rich Text Editor text body,
   - [ ] Title,
   - [ ] Expected due date,
-  -
 - [ ] Google Calendar and Outlook integration.
+- [ ] Multiple user usage.
+- [ ] Mail reminders.
+- [ ] Overall convert a "TO-DO" to a "TASK". By changing name and concept.
+- [ ] Add priority order, Each order place can have 1 deep sub prioritizing system. Top 1 is a priority place, Top 1.1 is a sub priority. Make in the UI unique place for places and tree view for sub priorities.
