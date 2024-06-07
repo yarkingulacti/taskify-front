@@ -6,12 +6,18 @@ Guess what? It's build with REACT!
 
 - [x] React Icons pack will be added.
 - [x] React toastify will be added for notifications.
-- [ ] Add a sidebar;
-  - [ ] Calendar link
-  - [ ] History link, Remove history totaly and move to seperate page,
-  - [ ] Add To-do link
-  - [ ] To-dos link
-  - [ ] Find an Logo. Link to homepage
+- [x] Add a sidebar;
+  - [x] Calendar link
+  - [x] History link, Remove history totaly and move to seperate page,
+  - [x] Add To-do link
+  - [x] To-dos link
+  - [x] Find an Logo. Link to homepage
+- [ ] Add route pages for links
+  - [ ] Calendar View and Route
+  - [ ] History View and Route
+  - [ ] Add Task View and Route
+  - [ ] Tasks View and Route
+  - [ ] Dashboard View and Route
 - [ ] Cardify to-dos.
 - [ ] More to-do data;
   - [ ] Locations with labels (Map integration),
