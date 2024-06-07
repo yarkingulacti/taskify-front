@@ -2,17 +2,32 @@
 
 Guess what? It's build with REACT!
 
+## Current Tasks (in order wise)
+
+- [x] React Icons pack will be added.
+- [x] React toastify will be added for notifications.
+- [ ] Add a sidebar;
+  - [ ] Calendar link
+  - [ ] History link, Remove history totaly and move to seperate page,
+  - [ ] Add To-do link
+  - [ ] To-dos link
+  - [ ] Find an Logo. Link to homepage
+- [ ] Cardify to-dos.
+- [ ] More to-do data;
+  - [ ] Locations with labels (Map integration),
+  - [ ] Related person,
+  - [ ] Reminders,
+  - [ ] Alarms,
+  - [ ] Tags,
+  - [ ] Categories,
+  - [ ] Rich Text Editor text body,
+  - [ ] Title,
+  - [ ] Expected due date,
+
 ## Backlog
 
-- [ ] React toastify will be added for notifications.
-- [ ] History spinner load icon.
-- [ ] React Icons pack will be added.
-- [ ] Cardify to-dos.
 - [ ] Add todo detail, have history of it here. (Seperate page)
-- [ ] YATDA heading will go to homepage. (Where to-dos are)
-- [ ] Remove total history.
 - [ ] All to-do done animated image, also a sound in addition.
-- [ ] Find an Logo.
 - [ ] Single to-do done sound and animation.
 - [ ] Statistics;
   - [ ] To-dos done in total,
@@ -24,16 +39,6 @@ Guess what? It's build with REACT!
 - [ ] To-do tags.
 - [ ] Backend integration.
 - [ ] Share to-do with share permissions.
-- [ ] More to-do data;
-  - [ ] Locations with labels (Map integration),
-  - [ ] Related person,
-  - [ ] Reminders,
-  - [ ] Alarms,
-  - [ ] Tags,
-  - [ ] Categories,
-  - [ ] Rich Text Editor text body,
-  - [ ] Title,
-  - [ ] Expected due date,
 - [ ] Google Calendar and Outlook integration.
 - [ ] Multiple user usage.
 - [ ] Mail reminders.
