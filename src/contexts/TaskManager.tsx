@@ -3,7 +3,7 @@ import { TaskModel } from "../schema/database";
 
 interface TaskManagerInterface {
   tasks: TaskModel[];
-  createTask: (task: TaskModel) => void;
+  createTask: (task: TaskModel, callback?: () => void) => void;
 }
 
 const TaskManager = createContext<TaskManagerInterface | undefined>(undefined);

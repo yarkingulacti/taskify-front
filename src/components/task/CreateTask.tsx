@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 import { useTaskManager } from "../../contexts/TaskManager";
 
@@ -6,18 +7,22 @@ export const CreateTask: React.FC = () => {
   const [title, setTitle] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
 
+  const navigate = useNavigate();
   const { createTask } = useTaskManager();
 
   function saveData(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    //TODO validate the form data with formit or yup
-    createTask({
-      title,
-      description: description || null,
-      createdAt: new Date(),
-      updatedAt: null,
-    });
+    //TODO validate the form data with formik
+    createTask(
+      {
+        title,
+        description: description || null,
+      },
+      () => {
+        navigate("/tasks");
+      }
+    );
   }
 
   return (
