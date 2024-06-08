@@ -8,11 +8,10 @@ export const TaskManagementProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const [tasks, setTasks] = React.useState<TaskModel[]>([]);
-
-  let db: IDBPDatabase<Taskify> | null = null;
+  const dbRef = React.useRef<IDBPDatabase<Taskify> | null>(null);
 
   async function initDB() {
-    db = await openDB<Taskify>("taskify", 1, {
+    const db = await openDB<Taskify>("taskify", 1, {
       upgrade(db) {
         const taskStore = db.createObjectStore("tasks", {
           keyPath: "id",
@@ -24,13 +23,17 @@ export const TaskManagementProvider: React.FC<{
       },
     });
 
-    if (db) console.log(`🚀 Database initialized successfully!`);
-    else console.error(`🚨 Error initializing database!`);
+    if (db) {
+      dbRef.current = db;
+      console.log(`🚀 Database initialized successfully!`);
+    } else {
+      console.error(`🚨 Error initializing database!`);
+    }
   }
 
   function fetchTasks() {
-    if (db) {
-      return db
+    if (dbRef.current) {
+      return dbRef.current
         .getAll("tasks")
         .then((tasks) => {
           setTasks(tasks);
@@ -47,8 +50,9 @@ export const TaskManagementProvider: React.FC<{
   }
 
   function createTask(newTask: TaskModel) {
-    if (db)
-      db.add("tasks", newTask)
+    if (dbRef.current) {
+      dbRef.current
+        .add("tasks", newTask)
         .then((newId) => {
           toast(`🚀 Task #${newId} added successfully!`, {
             icon: Icons.success,
@@ -70,7 +74,9 @@ export const TaskManagementProvider: React.FC<{
         .finally(() => {
           fetchTasks();
         });
-    else console.error(`🚨 Database not available!`);
+    } else {
+      console.error(`🚨 Database not available!`);
+    }
   }
 
   React.useEffect(() => {
@@ -82,8 +88,8 @@ export const TaskManagementProvider: React.FC<{
     init();
 
     return () => {
-      if (db) {
-        db.close();
+      if (dbRef.current) {
+        dbRef.current.close();
         console.info(`🚀 Database closed successfully!`);
       }
     };
