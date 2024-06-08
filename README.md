@@ -30,6 +30,7 @@ Guess what? It's build with REACT!
   - [ ] Title,
   - [ ] Expected due date,
 - [ ] Dynamic page title
+- [ ] Breadcrumb to each page
 
 ## Backlog
 
@@ -51,3 +52,4 @@ Guess what? It's build with REACT!
 - [ ] Mail reminders.
 - [x] Overall convert a "To-do" to a "TASK". By changing name and concept.
 - [ ] Add priority order, Each order place can have 1 deep sub prioritizing system. Top 1 is a priority place, Top 1.1 is a sub priority. Make in the UI unique place for places and tree view for sub priorities.
+- [ ] Task Board, Track each step's time spent

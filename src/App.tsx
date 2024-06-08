@@ -13,15 +13,35 @@ function App() {
           <Route path="dashboard" key="dashboard" element={<Home />} />
           <Route path="tasks" key="tasks" element={<Tasks />} />
           <Route path="task/create" key="taskCreate" element={<CreateTask />} />
-          <Route path="task/:id" key="taskDetail" element={<CreateTask />} />
-          <Route path="task/:id/edit" key="taskEdit" element={<CreateTask />} />
           <Route
+            //TODO - Create page, include detail, history
+            path="task/:id"
+            key="taskDetail"
+            element={<CreateTask />}
+          />
+          <Route
+            //TODO - Create page, include task detail, confirmation dialog
+            path="task/:id/edit"
+            key="taskEdit"
+            element={<CreateTask />}
+          />{" "}
+          <Route
+            //TODO - Create page, include confirmation dialog and task detail
             path="task/:id/delete"
             key="taskDelete"
             element={<CreateTask />}
           />
-          <Route path="history" key="history" element={<Home />} />
-          <Route path="calendar" key="calendar" element={<Home />} />
+          <Route //TODO - Create page, full calendar view
+            path="calendar"
+            key="calendar"
+            element={<Home />}
+          />
+          <Route
+            //TODO - Create page, include kanban board, task detail modal that contains task history
+            path="backlog"
+            key="backlog"
+            element={<Home />}
+          />
           <Route path="*" key="pageNotFound" element={<PageNotFound />} />
         </Route>
       </Routes>

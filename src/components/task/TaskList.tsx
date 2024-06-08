@@ -15,7 +15,7 @@ export const TaskList: React.FC = () => {
   return (
     <div className="w-full">
       {list.length ? (
-        <ol className="flex gap-4">
+        <ol className="flex flex-wrap gap-4">
           {list.map((task) => (
             <Task key={task.id} data={task} />
           ))}

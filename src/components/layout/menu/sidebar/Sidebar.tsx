@@ -19,7 +19,7 @@ export const Sidebar: React.FC<{
           An app that exists for Tasks
         </p>
       </Link>
-      <ul className="border-t border-gray-300">
+      <ul className="border-t border-gray-300 py-4 pl-4">
         <DefaultListRenderer
           list={links}
           noText={<h3>No Menu Items were specified!</h3>}
