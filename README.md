@@ -15,9 +15,9 @@ Guess what? It's build with REACT!
 - [ ] Add route pages for links
   - [ ] Calendar View and Route
   - [ ] History View and Route
-  - [ ] Add Task View and Route
-  - [ ] Tasks View and Route
-  - [ ] Dashboard View and Route
+  - [x] Add Task View and Route
+  - [x] Tasks View and Route
+  - [x] Dashboard View and Route
 - [ ] Cardify Tasks.
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),
@@ -29,6 +29,7 @@ Guess what? It's build with REACT!
   - [ ] Rich Text Editor text body,
   - [ ] Title,
   - [ ] Expected due date,
+- [ ] Dynamic page title
 
 ## Backlog
 

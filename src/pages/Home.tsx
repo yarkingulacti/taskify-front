@@ -1,13 +1,10 @@
-import { TaskList } from "../components/task/TaskList";
+import Banner from "../assets/images/banner.svg";
 
 export function Home() {
   return (
-    <section className="p-16 w-full">
-      <div className="flex items-start justify-between gap-6">
-        <div className="flex items-start justify-between w-2/3">
-          <TaskList />
-        </div>
-      </div>
-    </section>
+    <div className="flex flex-col items-center justify-center">
+      <img src={Banner} alt="Taskify App Banner" className="w-6/12" />
+      <h1 className="text-4xl mt-5"> Hi! 👋 This is Taskify! ⚙ </h1>
+    </div>
   );
 }

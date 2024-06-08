@@ -1,6 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { SidebarMenu } from "./SidebarMenu";
+import { Sidebar } from "./menu/sidebar/Sidebar";
 import React from "react";
+import { linkNodes } from "./menu/links";
 
 export function MasterLayout() {
   const location = useLocation();
@@ -12,8 +13,10 @@ export function MasterLayout() {
 
   return (
     <main className="flex h-screen w-screen">
-      <SidebarMenu />
-      <Outlet />
+      <Sidebar links={linkNodes} />
+      <section className="p-16 w-full">
+        <Outlet />
+      </section>
     </main>
   );
 }
