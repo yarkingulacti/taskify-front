@@ -1,5 +1,5 @@
 import React from "react";
-import { TListItem } from "./ListItem";
+import { TListItem } from "./task/Task";
 
 export enum ETodoListHistoryAction {
   ADD = "ADD",

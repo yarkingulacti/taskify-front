@@ -1,5 +1,6 @@
 import React from "react";
-import Logo from "../assets/images/logos/taskify-logo.png";
+import classNames from "classnames";
+import Logo from "../../assets/images/logos/taskify-logo.png";
 // import { Link } from "react-router-dom";
 import {
   VscDiffAdded,
@@ -79,7 +80,9 @@ export const SidebarMenu: React.FC = () => {
           </a>
           <div
             hover-toggle-class="opacity-0"
-            className="marker absolute start-full bottom-1/2 -translate-x-1 translate-y-1/2 h-6 w-0.5 bg-blue-700 opacity-0 transition-opacity duration-150 ease-in-out"
+            className={classNames(
+              "marker absolute start-full bottom-1/2 -translate-x-1 translate-y-1/2 h-6 w-0.5 bg-blue-700 opacity-0 transition-opacity duration-150 ease-in-out"
+            )}
           ></div>
         </li>
         <li
