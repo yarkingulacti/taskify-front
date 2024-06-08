@@ -1,27 +1,25 @@
 import React from "react";
-import { TaskModel } from "../../schema/database";
+import { TfiTimer, TfiLightBulb, TfiCheckBox, TfiTime } from "react-icons/tfi";
+import { BsDot } from "react-icons/bs";
+import { TaskModel, TaskStatus } from "../../models/Task.model";
 
 const Task: React.FC<{
   data: TaskModel;
 }> = ({ data }) => {
   return (
     <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8">
-      <div className="flex items-start sm:gap-8">
-        <div
-          className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500"
-          aria-hidden="true"
-        >
-          <div className="flex items-center gap-1">
-            <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
-            <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-            <span className="h-4 w-0.5 rounded-full bg-indigo-500"></span>
-            <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-            <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
-          </div>
-        </div>
-
+      <div className="flex items-center sm:gap-8">
+        {data.status === TaskStatus.PENDING ? (
+          <TfiTimer className="size-16" />
+        ) : null}
+        {data.status === TaskStatus.IN_PROGRESS ? (
+          <TfiLightBulb className="size-16" />
+        ) : null}
+        {data.status === TaskStatus.COMPLETED ? (
+          <TfiCheckBox className="size-16" />
+        ) : null}
         <div>
-          <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 text-[10px] font-medium text-white">
+          <strong className="rounded border border-yellow-300 bg-yellow-300 px-3 py-1.5 text-[10px] font-medium text-black">
             Episode #101
           </strong>
 
@@ -38,41 +36,15 @@ const Task: React.FC<{
 
           <div className="mt-4 sm:flex sm:items-center sm:gap-2">
             <div className="flex items-center gap-1 text-gray-500">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+              <TfiTime />
 
               <p className="text-xs font-medium">48:32 minutes</p>
             </div>
 
-            <span className="hidden sm:block" aria-hidden="true">
-              &middot;
-            </span>
+            <BsDot />
 
             <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-              Featuring{" "}
-              <a href="#" className="underline hover:text-gray-700">
-                Barry
-              </a>
-              ,
-              <a href="#" className="underline hover:text-gray-700">
-                Sandra
-              </a>{" "}
-              and
-              <a href="#" className="underline hover:text-gray-700">
-                August
-              </a>
+              Created by {data.creator.username}
             </p>
           </div>
         </div>
