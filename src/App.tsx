@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { PageNotFound } from "./pages/errors/PageNotFound";
 import { CreateTask } from "./components/task/CreateTask";
 import { Tasks } from "./pages/Tasks";
+import { TaskCalendar } from "./pages/Calendar";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             //TODO - Create page, include detail, history
             path="task/:id"
             key="taskDetail"
-            element={<CreateTask />}
+            element={<Home />}
           />
           <Route
             //TODO - Create page, include task detail, confirmation dialog
@@ -31,11 +32,7 @@ function App() {
             key="taskDelete"
             element={<CreateTask />}
           />
-          <Route //TODO - Create page, full calendar view
-            path="calendar"
-            key="calendar"
-            element={<Home />}
-          />
+          <Route path="calendar" key="calendar" element={<TaskCalendar />} />
           <Route
             //TODO - Create page, include kanban board, task detail modal that contains task history
             path="backlog"

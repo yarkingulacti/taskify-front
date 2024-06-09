@@ -6,8 +6,8 @@ export interface TaskModel {
   description: string;
   status: TaskStatus;
   creator: UserModel;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }
 
 export enum TaskStatus {
