@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { TaskList } from "../components/task/TaskList";
 import { VscDiffAdded } from "react-icons/vsc";
 
-export const Tasks: React.FC = () => {
+const Tasks: React.FC = () => {
   return (
     <div className="flex flex-col w-fulls items-start justify-between gap-6">
       <div className="flex items-start justify-between w-2/3">
@@ -24,3 +24,5 @@ export const Tasks: React.FC = () => {
     </div>
   );
 };
+
+export default Tasks;

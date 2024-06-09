@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { VscDiffAdded } from "react-icons/vsc";
 import { useTaskManager } from "../../contexts/TaskManager";
 
-export const CreateTask: React.FC = () => {
+const CreateTask: React.FC = () => {
   const [title, setTitle] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
 
@@ -83,3 +83,5 @@ export const CreateTask: React.FC = () => {
     </div>
   );
 };
+
+export default CreateTask;

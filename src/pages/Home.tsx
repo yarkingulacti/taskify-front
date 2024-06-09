@@ -1,7 +1,7 @@
 import Banner from "../assets/images/banner.jpg";
 import Logo from "../assets/images/logo/logo-black.png";
 
-export function Home() {
+export default function Home() {
   return (
     <div className="flex gap-6 items-center justify-center">
       <img src={Banner} alt="Taskify App Banner" className="w-9/12" />

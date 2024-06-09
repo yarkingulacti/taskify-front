@@ -1,8 +1,10 @@
 import React from "react";
+import _ from "lodash";
 import axios from "axios";
 import { Icons, toast } from "react-toastify";
 import TaskManager from "../contexts/TaskManager";
 import { TaskModel } from "../models/Task.model";
+import useStore from "../stores/store";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
 
@@ -10,8 +12,11 @@ export const TaskManagementProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const [tasks, setTasks] = React.useState<TaskModel[]>([]);
+  const { loading, done } = useStore();
 
   async function fetchTasks() {
+    loading();
+
     await axios({
       method: "GET",
       url: "/task/list",
@@ -26,10 +31,13 @@ export const TaskManagementProvider: React.FC<{
           autoClose: 2500,
           type: "error",
         });
-      });
+      })
+      .finally(() => _.delay(done, 1000));
   }
 
   async function createTask(data: TaskModel, callback?: () => void) {
+    loading();
+
     await axios({
       method: "POST",
       url: "/task",
@@ -67,7 +75,8 @@ export const TaskManagementProvider: React.FC<{
             type: "error",
           });
         }
-      });
+      })
+      .finally(() => _.delay(done, 1000));
   }
 
   React.useEffect(() => {

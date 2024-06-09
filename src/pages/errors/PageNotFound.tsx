@@ -3,7 +3,7 @@ import { VscArrowCircleLeft } from "react-icons/vsc";
 import Error404 from "../../assets/images/errors/404.svg";
 import { Link } from "react-router-dom";
 
-export const PageNotFound: React.FC = () => {
+const PageNotFound: React.FC = () => {
   return (
     <div className="flex flex-col items-center">
       <img className="w-5/12" src={Error404} alt="404 Not Found" />
@@ -20,3 +20,5 @@ export const PageNotFound: React.FC = () => {
     </div>
   );
 };
+
+export default PageNotFound;

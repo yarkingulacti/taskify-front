@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { TaskModel } from "../schema/database";
+import { TaskModel } from "../models/Task.model";
 
 interface TaskManagerInterface {
   tasks: TaskModel[];

@@ -6,7 +6,7 @@ import listPlugin from "@fullcalendar/list";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
-export function TaskCalendar() {
+const TaskCalendar: React.FC = () => {
   const calendar = React.useRef<Calendar | null>(null);
   const navigate = useNavigate();
 
@@ -158,4 +158,6 @@ export function TaskCalendar() {
     };
   }, []);
   return <div ref={calendarElement} className="w-full h-full"></div>;
-}
+};
+
+export default TaskCalendar;
