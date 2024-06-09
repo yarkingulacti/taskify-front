@@ -9,6 +9,7 @@ import { TaskManagementProvider } from "./providers/TaskManagementProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    ,
     <TaskManagementProvider>
       <ToastContainer />
       <App />

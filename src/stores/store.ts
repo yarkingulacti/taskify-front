@@ -6,18 +6,14 @@ interface Store {
   done: () => void;
 }
 
-const useStore = create<Store>((set) => ({
+const useCustomStore = create<Store>((set) => ({
   isLoading: false,
   loading: () => {
-    console.log("loading");
-
     set({ isLoading: true });
   },
   done: () => {
-    console.log("done");
-
     set({ isLoading: false });
   },
 }));
 
-export default useStore;
+export default useCustomStore;

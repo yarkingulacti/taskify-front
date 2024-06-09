@@ -2,10 +2,10 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import _ from "lodash";
 import Typed from "typed.js";
-import useStore from "../../stores/store";
+import useCustomStore from "../../stores/store";
 
 export const FullscreenLoader: React.FC = () => {
-  const { isLoading, loading, done } = useStore();
+  const { isLoading, loading, done } = useCustomStore();
   const typed = React.useRef<Typed | null>(null);
   const typedElement = React.useRef<HTMLDivElement>(null);
   const location = useLocation();

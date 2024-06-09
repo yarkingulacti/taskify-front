@@ -4,7 +4,7 @@ import axios from "axios";
 import { Icons, toast } from "react-toastify";
 import TaskManager from "../contexts/TaskManager";
 import { TaskCreateModel, TaskModel } from "../models/Task.model";
-import useStore from "../stores/store";
+import useCustomStore from "../stores/store";
 import { PaginationResponse } from "../components/common/pagination/types";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
@@ -14,7 +14,8 @@ export const TaskManagementProvider: React.FC<{
 }> = ({ children }) => {
   const isFetching = React.useRef(false);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [tasks, setTasks] = React.useState<PaginationResponse<TaskModel>>({
+  const [pageSize, setPageSize] = React.useState(10);
+  const tasks = React.useRef<PaginationResponse<TaskModel>>({
     items: [],
     meta: {
       currentPage: 0,
@@ -23,7 +24,7 @@ export const TaskManagementProvider: React.FC<{
       totalItemsCount: 0,
     },
   });
-  const { loading, done } = useStore();
+  const { loading, done } = useCustomStore();
 
   async function fetchTasks() {
     loading();
@@ -34,12 +35,12 @@ export const TaskManagementProvider: React.FC<{
       method: "GET",
       url: "/task/list",
       params: {
-        take: 10,
-        skip: currentPage - 1,
+        take: pageSize,
+        skip: (currentPage - 1) * pageSize,
       },
     })
       .then(({ data }) => {
-        setTasks(data);
+        tasks.current = data;
       })
       .catch((error) => {
         toast(`${error}`, {
@@ -51,20 +52,19 @@ export const TaskManagementProvider: React.FC<{
       })
       .finally(() => {
         isFetching.current = false;
-        _.delay(done, 1000);
+        done();
       });
   }
 
-  async function createTask(data: TaskCreateModel, callback?: () => void) {
+  async function createTask(data: TaskCreateModel) {
     loading();
 
-    await axios<PaginationResponse<TaskModel>>({
+    return axios<TaskModel>({
       method: "POST",
       url: "/task",
       data,
     })
-      .then(({ data }) => {
-        setTasks(data);
+      .then(() => {
         toast("Task created successfully", {
           icon: Icons.success,
           closeOnClick: false,
@@ -72,9 +72,7 @@ export const TaskManagementProvider: React.FC<{
           type: "success",
         });
 
-        if (callback) {
-          callback();
-        }
+        return fetchTasks();
       })
       .catch((error) => {
         if (error.response) {
@@ -107,7 +105,9 @@ export const TaskManagementProvider: React.FC<{
   }, [currentPage]);
 
   return (
-    <TaskManager.Provider value={{ tasks, createTask, setCurrentPage }}>
+    <TaskManager.Provider
+      value={{ tasks, fetchTasks, createTask, setCurrentPage, setPageSize }}
+    >
       {children}
     </TaskManager.Provider>
   );
