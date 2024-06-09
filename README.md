@@ -18,7 +18,7 @@ Guess what? It's build with REACT!
   - [x] Add Task View and Route
   - [x] Tasks View and Route
   - [x] Dashboard View and Route
-  - [ ] Backlog(AKA task board) View and Route (@syncfusion/ej2-react-kanban)
+  - [ ] Backlog(AKA task board) View and Route (do it with draggable)
 - [x] Cardify Tasks.
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),

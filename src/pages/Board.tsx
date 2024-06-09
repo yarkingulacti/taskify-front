@@ -1,9 +1,3 @@
-import {
-  KanbanComponent,
-  ColumnsDirective,
-  ColumnDirective,
-} from "@syncfusion/ej2-react-kanban";
-
 const Board = () => {
   const data = [
     {
@@ -64,23 +58,7 @@ const Board = () => {
     },
   ];
 
-  return (
-    <div className="App">
-      <KanbanComponent
-        id="kanban"
-        keyField="Status"
-        dataSource={data}
-        cardSettings={{ contentField: "Summary", headerField: "Id" }}
-      >
-        <ColumnsDirective>
-          <ColumnDirective headerText="To Do" keyField="Open" />
-          <ColumnDirective headerText="In Progress" keyField="InProgress" />
-          <ColumnDirective headerText="Testing" keyField="Testing" />
-          <ColumnDirective headerText="Done" keyField="Close" />
-        </ColumnsDirective>
-      </KanbanComponent>
-    </div>
-  );
+  return <div>Board</div>;
 };
 
 export default Board;
