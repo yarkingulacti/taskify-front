@@ -14,12 +14,9 @@ export const FullscreenLoader: React.FC = () => {
     loading();
 
     _.delay(() => {
-      if (typed.current) {
-        typed.current.destroy();
-      }
-
+      typed.current?.destroy();
       done();
-    }, 1250);
+    }, 300);
   }, [location.pathname]);
 
   React.useEffect(() => {
