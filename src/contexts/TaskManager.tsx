@@ -1,19 +1,21 @@
-import { createContext, useContext, MutableRefObject } from "react";
+import React from "react";
 import { TaskCreateModel, TaskModel } from "../models/Task.model";
 import { PaginationResponse } from "../components/common/pagination/types";
 
 interface TaskManagerInterface {
-  tasks: MutableRefObject<PaginationResponse<TaskModel>>;
-  fetchTasks: () => Promise<void>;
+  tasks: PaginationResponse<TaskModel>;
+  reFetch: () => Promise<void>;
   setPageSize: (size: number) => void;
   createTask: (task: TaskCreateModel) => Promise<void>;
   setCurrentPage: (page: number) => void;
 }
 
-const TaskManager = createContext<TaskManagerInterface | undefined>(undefined);
+const TaskManager = React.createContext<TaskManagerInterface | undefined>(
+  undefined
+);
 
 export const useTaskManager = () => {
-  const context = useContext(TaskManager);
+  const context = React.useContext(TaskManager);
   if (context === undefined) {
     throw new Error("useTaskManager must be used within a TaskManagerProvider");
   }

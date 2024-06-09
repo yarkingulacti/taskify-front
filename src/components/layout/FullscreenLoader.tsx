@@ -32,11 +32,9 @@ export const FullscreenLoader: React.FC = () => {
     }
   }, [isLoading]);
 
-  return (
-    isLoading && (
-      <div className="fixed inset-0 w-full h-full bg-white z-50 flex items-center justify-center">
-        <div className="text-4xl" ref={typedElement}></div>
-      </div>
-    )
-  );
+  return isLoading ? (
+    <div className="fixed inset-0 w-full h-full bg-white z-50 flex items-center justify-center">
+      <div className="text-4xl" ref={typedElement}></div>
+    </div>
+  ) : null;
 };

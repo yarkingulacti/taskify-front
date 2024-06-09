@@ -12,10 +12,10 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
 export const TaskManagementProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const isFetching = React.useRef(false);
+  const [isFetching, setIsFetching] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(10);
-  const tasks = React.useRef<PaginationResponse<TaskModel>>({
+  const [tasks, setTasks] = React.useState<PaginationResponse<TaskModel>>({
     items: [],
     meta: {
       currentPage: 0,
@@ -29,7 +29,7 @@ export const TaskManagementProvider: React.FC<{
   async function fetchTasks() {
     loading();
 
-    isFetching.current = true;
+    setIsFetching(true);
 
     await axios<PaginationResponse<TaskModel>>({
       method: "GET",
@@ -40,7 +40,7 @@ export const TaskManagementProvider: React.FC<{
       },
     })
       .then(({ data }) => {
-        tasks.current = data;
+        setTasks(data);
       })
       .catch((error) => {
         toast(`${error}`, {
@@ -51,7 +51,7 @@ export const TaskManagementProvider: React.FC<{
         });
       })
       .finally(() => {
-        isFetching.current = false;
+        setIsFetching(false);
         done();
       });
   }
@@ -97,16 +97,17 @@ export const TaskManagementProvider: React.FC<{
       .finally(() => _.delay(done, 1000));
   }
 
+  async function reFetch() {
+    if (!isFetching) await fetchTasks();
+  }
+
   React.useEffect(() => {
-    async function init() {
-      if (!isFetching.current) await fetchTasks();
-    }
-    init();
+    reFetch();
   }, [currentPage]);
 
   return (
     <TaskManager.Provider
-      value={{ tasks, fetchTasks, createTask, setCurrentPage, setPageSize }}
+      value={{ tasks, reFetch, createTask, setCurrentPage, setPageSize }}
     >
       {children}
     </TaskManager.Provider>

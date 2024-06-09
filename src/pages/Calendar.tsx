@@ -157,7 +157,9 @@ const TaskCalendar: React.FC = () => {
       calendar.current?.destroy();
     };
   }, []);
-  return <div ref={calendarElement} className="w-full h-full"></div>;
+  return (
+    <div ref={calendarElement} className="w-full h-[calc(100vh-10rem)]"></div>
+  );
 };
 
 export default TaskCalendar;
