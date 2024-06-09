@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import { TaskModel } from "../models/Task.model";
+import { TaskCreateModel, TaskModel } from "../models/Task.model";
 
 interface TaskManagerInterface {
   tasks: TaskModel[];
-  createTask: (task: TaskModel, callback?: () => void) => void;
+  createTask: (task: TaskCreateModel, callback?: () => void) => void;
 }
 
 const TaskManager = createContext<TaskManagerInterface | undefined>(undefined);

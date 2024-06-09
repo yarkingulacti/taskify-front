@@ -9,6 +9,7 @@ const PageNotFound = lazy(() => import("./pages/errors/PageNotFound"));
 const CreateTask = lazy(() => import("./components/task/CreateTask"));
 const Tasks = lazy(() => import("./pages/Tasks"));
 const TaskCalendar = lazy(() => import("./pages/Calendar"));
+const Board = lazy(() => import("./pages/Board"));
 
 function App() {
   return (
@@ -43,12 +44,7 @@ function App() {
               element={<CreateTask />}
             />
             <Route path="calendar" key="calendar" element={<TaskCalendar />} />
-            <Route
-              //TODO - Create page, include kanban board, task detail modal that contains task history
-              path="backlog"
-              key="backlog"
-              element={<Home />}
-            />
+            <Route path="board" key="board" element={<Board />} />
             <Route path="*" key="pageNotFound" element={<PageNotFound />} />
           </Route>
         </Routes>

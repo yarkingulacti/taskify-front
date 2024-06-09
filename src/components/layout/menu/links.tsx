@@ -16,7 +16,7 @@ const links: MenuItem[] = [
   },
   {
     icon: <HiViewBoards className="size-7" />,
-    routePath: "/backlog",
+    routePath: "/board",
     text: "Backlog",
   },
   // {

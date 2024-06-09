@@ -13,12 +13,13 @@ Guess what? It's build with REACT!
   - [x] Tasks link
   - [x] Find an Logo. Link to homepage
 - [ ] Add route pages for links
-  - [ ] Calendar View and Route
+  - [x] Calendar View and Route
   - [ ] History View and Route
   - [x] Add Task View and Route
   - [x] Tasks View and Route
   - [x] Dashboard View and Route
-- [ ] Cardify Tasks.
+  - [ ] Backlog(AKA task board) View and Route (@syncfusion/ej2-react-kanban)
+- [x] Cardify Tasks.
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),
   - [ ] Related person,
@@ -34,7 +35,7 @@ Guess what? It's build with REACT!
 
 ## Backlog
 
-- [ ] Add todo detail, have history of it here. (Seperate page)
+- [ ] Add task detail, have history of it here. (Seperate page)
 - [ ] All Task done animated image, also a sound in addition.
 - [ ] Single Task done sound and animation.
 - [ ] Statistics;
@@ -45,7 +46,7 @@ Guess what? It's build with REACT!
   - [ ] Top N many Tasks that are lasting longest to complete,
 - [ ] Managable Task categories.
 - [ ] Task tags.
-- [ ] Backend integration.
+- [x] Backend integration.
 - [ ] Share Task with share permissions.
 - [ ] Google Calendar and Outlook integration.
 - [ ] Multiple user usage.
@@ -53,3 +54,4 @@ Guess what? It's build with REACT!
 - [x] Overall convert a "To-do" to a "TASK". By changing name and concept.
 - [ ] Add priority order, Each order place can have 1 deep sub prioritizing system. Top 1 is a priority place, Top 1.1 is a sub priority. Make in the UI unique place for places and tree view for sub priorities.
 - [ ] Task Board, Track each step's time spent
+- [ ] Rich task description editor

@@ -10,6 +10,11 @@ export interface TaskModel {
   updated_at: string;
 }
 
+export interface TaskCreateModel {
+  title: string;
+  description: string;
+}
+
 export enum TaskStatus {
   PENDING = "PENDING",
   IN_PROGRESS = "IN_PROGRESS",
