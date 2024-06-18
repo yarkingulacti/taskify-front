@@ -7,6 +7,7 @@ import { useTaskManager } from "../../contexts/TaskManager";
 import { TaskCreateModel } from "../../models/Task.model";
 import classNames from "classnames";
 import useCustomStore from "../../stores/store";
+import { RiLoader2Fill } from "react-icons/ri";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -15,7 +16,7 @@ const validationSchema = Yup.object().shape({
 
 const CreateTask: React.FC = () => {
   const navigate = useNavigate();
-  const { loading } = useCustomStore();
+  const { isRestLoading, restLoading, restLoaded } = useCustomStore();
   const { createTask } = useTaskManager();
   const { errors, handleSubmit, handleChange, values, isValid } = useFormik({
     initialValues: {
@@ -31,8 +32,9 @@ const CreateTask: React.FC = () => {
   });
 
   function saveData(data: TaskCreateModel) {
-    loading();
+    restLoading();
     createTask(data).then(() => {
+      restLoaded();
       navigate("/tasks");
     });
   }
@@ -111,7 +113,12 @@ const CreateTask: React.FC = () => {
             ></span>
 
             <span className="relative inline-flex items-center border-2 border-current px-8 py-3 text-sm font-bold uppercase tracking-widest text-black group-active:text-opacity-75">
-              Create Task <VscDiffAdded className="ml-1 size-6" />
+              Create Task{" "}
+              {isRestLoading ? (
+                <RiLoader2Fill className="ml-1 size-6" />
+              ) : (
+                <VscDiffAdded className="ml-1 size-6" />
+              )}
             </span>
           </button>
         </div>

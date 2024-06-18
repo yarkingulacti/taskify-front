@@ -5,17 +5,17 @@ import Typed from "typed.js";
 import useCustomStore from "../../stores/store";
 
 export const FullscreenLoader: React.FC = () => {
-  const { isLoading, loading, done } = useCustomStore();
+  const { isPageLoading, pageLoading, pageLoaded } = useCustomStore();
   const typed = React.useRef<Typed | null>(null);
   const typedElement = React.useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   React.useEffect(() => {
-    loading();
+    pageLoading();
 
     _.delay(() => {
       typed.current?.destroy();
-      done();
+      pageLoaded();
     }, 300);
   }, [location.pathname]);
 
@@ -30,9 +30,9 @@ export const FullscreenLoader: React.FC = () => {
 
       typed.current.start();
     }
-  }, [isLoading]);
+  }, [isPageLoading]);
 
-  return isLoading ? (
+  return isPageLoading ? (
     <div className="fixed inset-0 w-full h-full bg-white z-50 flex items-center justify-center">
       <div className="text-4xl" ref={typedElement}></div>
     </div>

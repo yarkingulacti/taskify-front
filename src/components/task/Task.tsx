@@ -11,7 +11,7 @@ const Task: React.FC<{
   return (
     <article
       className={classNames(
-        "rounded-xl bg-white shadow-md p-4 ring sm:p-6 lg:p-8 transform hover:-translate-y-2 hover:shadow-lg transition-all duration-150 ease-linear",
+        "rounded-xl bg-white shadow-md px-5 py-3 ring transform hover:-translate-y-2 hover:shadow-lg transition-all duration-150 ease-linear",
         {
           "ring-yellow-300": data.status === TaskStatus.PENDING,
           "ring-blue-300": data.status === TaskStatus.IN_PROGRESS,

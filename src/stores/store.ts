@@ -1,18 +1,28 @@
 import { create } from "zustand";
 
 interface Store {
-  isLoading: boolean;
-  loading: () => void;
-  done: () => void;
+  isPageLoading: boolean;
+  isRestLoading: boolean;
+  restLoading: () => void;
+  restLoaded: () => void;
+  pageLoading: () => void;
+  pageLoaded: () => void;
 }
 
 const useCustomStore = create<Store>((set) => ({
-  isLoading: false,
-  loading: () => {
-    set({ isLoading: true });
+  isPageLoading: false,
+  isRestLoading: false,
+  restLoading: () => {
+    set({ isRestLoading: true });
   },
-  done: () => {
-    set({ isLoading: false });
+  restLoaded: () => {
+    set({ isRestLoading: false });
+  },
+  pageLoading: () => {
+    set({ isPageLoading: true });
+  },
+  pageLoaded: () => {
+    set({ isPageLoading: false });
   },
 }));
 

@@ -21,5 +21,5 @@ export interface PageMetadata {
 }
 
 export interface PaginationProps extends PageMetadata {
-  onPageChange: (page: number) => PaginationMetadata;
+  onPageChange: (page: number) => void;
 }

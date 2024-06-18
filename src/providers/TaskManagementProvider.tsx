@@ -1,10 +1,8 @@
 import React from "react";
-import _ from "lodash";
 import axios from "axios";
 import { Icons, toast } from "react-toastify";
 import TaskManager from "../contexts/TaskManager";
 import { TaskCreateModel, TaskModel } from "../models/Task.model";
-import useCustomStore from "../stores/store";
 import { PaginationResponse } from "../components/common/pagination/types";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
@@ -24,11 +22,8 @@ export const TaskManagementProvider: React.FC<{
       totalItemsCount: 0,
     },
   });
-  const { loading, done } = useCustomStore();
 
   async function fetchTasks() {
-    loading();
-
     setIsFetching(true);
 
     await axios<PaginationResponse<TaskModel>>({
@@ -52,13 +47,10 @@ export const TaskManagementProvider: React.FC<{
       })
       .finally(() => {
         setIsFetching(false);
-        done();
       });
   }
 
   async function createTask(data: TaskCreateModel) {
-    loading();
-
     return axios<TaskModel>({
       method: "POST",
       url: "/task",
@@ -93,8 +85,7 @@ export const TaskManagementProvider: React.FC<{
             type: "error",
           });
         }
-      })
-      .finally(() => _.delay(done, 1000));
+      });
   }
 
   async function reFetch() {
