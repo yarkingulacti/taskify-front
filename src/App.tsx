@@ -6,7 +6,9 @@ import { TaskDetail } from "./components/task/taskDetail";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home"));
-const PageNotFound = lazy(() => import("./pages/error/PageNotFound"));
+const PageNotFound = lazy(
+  () => import("./components/layout/error/PageNotFound")
+);
 const CreateTask = lazy(() => import("./components/task/createTask"));
 const Tasks = lazy(() => import("./pages/Tasks"));
 const TaskCalendar = lazy(() => import("./pages/Calendar"));

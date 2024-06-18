@@ -1,6 +1,6 @@
 import React from "react";
 import { VscArrowCircleLeft } from "react-icons/vsc";
-import Error404 from "../../assets/images/errors/404.svg";
+import Error404 from "../../../assets/images/errors/404.svg";
 import { Link } from "react-router-dom";
 
 const PageNotFound: React.FC = () => {
