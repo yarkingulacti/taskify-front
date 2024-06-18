@@ -7,7 +7,7 @@ import { TaskDetail } from "./components/task/taskDetail";
 // Lazy load components
 const Home = lazy(() => import("./pages/Home"));
 const PageNotFound = lazy(
-  () => import("./components/layout/error/PageNotFound")
+  () => import("./components/layout/error/pageNotFound")
 );
 const CreateTask = lazy(() => import("./components/task/createTask"));
 const Tasks = lazy(() => import("./pages/Tasks"));

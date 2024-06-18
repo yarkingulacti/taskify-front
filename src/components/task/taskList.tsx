@@ -1,7 +1,7 @@
 import React from "react";
 import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
 import Task from "./task";
-import PageNotFound from "../layout/error/PageNotFound";
+import PageNotFound from "../layout/error/pageNotFound";
 import { Pagination } from "../pagination/Pagination";
 
 export const TaskList: React.FC = () => {
