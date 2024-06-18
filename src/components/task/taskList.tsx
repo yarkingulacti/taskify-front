@@ -11,8 +11,6 @@ export const TaskList: React.FC = () => {
   const { tasks, setCurrentPage } = useTaskManager();
 
   React.useEffect(() => {
-    console.log(tasks.meta);
-
     if (tasks.meta) {
       setCurrentPage(tasks.meta.currentPage);
       setTotalPages(tasks.meta.totalPages);
