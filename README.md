@@ -2,16 +2,21 @@
 
 Guess what? It's build with REACT!
 
-## Current Tasks (in order wise)
+## In Progress
 
-- [x] React Icons pack will be added.
-- [x] React toastify will be added for notifications.
-- [x] Add a sidebar;
-  - [x] Calendar link
-  - [x] History link, Remove history totaly and move to seperate page,
-  - [x] Add Task link
-  - [x] Tasks link
-  - [x] Find an Logo. Link to homepage
+- [ ] Task list pagination;
+  - [ ] Page transition loader
+  - [ ] No item component
+  - [ ] style paging component
+  - [ ] fixed task list height
+  - [ ] static paging component position
+- [ ] Delete task, confirmation swal2
+  - [ ] in task detail
+  - [ ] in list
+- [ ] Edit task
+
+## Backlog
+
 - [ ] Add route pages for links
   - [x] Calendar View and Route
   - [ ] History View and Route
@@ -19,9 +24,6 @@ Guess what? It's build with REACT!
   - [x] Tasks View and Route
   - [x] Dashboard View and Route
   - [ ] Backlog(AKA task board) View and Route (do it with draggable)
-- [x] Cardify Tasks.
-- [ ] Delete task
-- [ ] Edit task
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),
   - [ ] Related person,
@@ -35,9 +37,6 @@ Guess what? It's build with REACT!
 - [ ] Task create step form
 - [ ] Dynamic page title
 - [ ] Breadcrumb to each page
-
-## Backlog
-
 - [ ] Add task detail, have history timeline here. (Seperate page)
 - [ ] All Task done animated image, also a sound in addition.
 - [ ] Single Task done sound and animation.
@@ -49,12 +48,24 @@ Guess what? It's build with REACT!
   - [ ] Top N many Tasks that are lasting longest to complete,
 - [ ] Managable Task categories.
 - [ ] Task tags.
-- [x] Backend integration.
 - [ ] Share Task with share permissions.
 - [ ] Google Calendar and Outlook integration.
 - [ ] Multiple user usage.
 - [ ] Mail reminders.
-- [x] Overall convert a "To-do" to a "TASK". By changing name and concept.
 - [ ] Add priority order, Each order place can have 1 deep sub prioritizing system. Top 1 is a priority place, Top 1.1 is a sub priority. Make in the UI unique place for places and tree view for sub priorities.
 - [ ] Task Board, Track each step's time spent
 - [ ] Rich task description editor
+
+## Done
+
+- [x] React Icons pack will be added.
+- [x] React toastify will be added for notifications.
+- [x] Add a sidebar;
+  - [x] Calendar link
+  - [x] History link, Remove history totaly and move to seperate page,
+  - [x] Add Task link
+  - [x] Tasks link
+  - [x] Find an Logo. Link to homepage
+- [x] Cardify Tasks.
+- [x] Backend integration.
+- [x] Overall convert a "To-do" to a "TASK". By changing name and concept.

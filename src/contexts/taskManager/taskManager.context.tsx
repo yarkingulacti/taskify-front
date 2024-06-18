@@ -1,6 +1,6 @@
 import React from "react";
-import { TaskCreateModel, TaskModel } from "../models/Task.model";
-import { PaginationResponse } from "../components/common/pagination/types";
+import { TaskCreateModel, TaskModel } from "../../models/task.model";
+import { PaginationResponse } from "../../components/pagination/types";
 
 interface TaskManagerInterface {
   tasks: PaginationResponse<TaskModel>;
@@ -10,16 +10,16 @@ interface TaskManagerInterface {
   setCurrentPage: (page: number) => void;
 }
 
-const TaskManager = React.createContext<TaskManagerInterface | undefined>(
-  undefined
-);
+const TaskManagerContext = React.createContext<
+  TaskManagerInterface | undefined
+>(undefined);
 
 export const useTaskManager = () => {
-  const context = React.useContext(TaskManager);
+  const context = React.useContext(TaskManagerContext);
   if (context === undefined) {
     throw new Error("useTaskManager must be used within a TaskManagerProvider");
   }
   return context;
 };
 
-export default TaskManager;
+export default TaskManagerContext;

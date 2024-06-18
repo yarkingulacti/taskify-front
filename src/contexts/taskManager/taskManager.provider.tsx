@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { Icons, toast } from "react-toastify";
-import TaskManager from "../contexts/TaskManager";
-import { TaskCreateModel, TaskModel } from "../models/Task.model";
-import { PaginationResponse } from "../components/common/pagination/types";
+import TaskManagerContext from "./taskManager.context";
+import { TaskCreateModel, TaskModel } from "../../models/task.model";
+import { PaginationResponse } from "../../components/pagination/types";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
 
@@ -97,10 +97,10 @@ export const TaskManagementProvider: React.FC<{
   }, [currentPage]);
 
   return (
-    <TaskManager.Provider
+    <TaskManagerContext.Provider
       value={{ tasks, reFetch, createTask, setCurrentPage, setPageSize }}
     >
       {children}
-    </TaskManager.Provider>
+    </TaskManagerContext.Provider>
   );
 };

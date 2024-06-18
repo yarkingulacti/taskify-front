@@ -1,7 +1,7 @@
 import React from "react";
 import { TfiTimer, TfiLightBulb, TfiCheckBox, TfiTime } from "react-icons/tfi";
 import { BsDot } from "react-icons/bs";
-import { TaskModel, TaskStatus } from "../../models/Task.model";
+import { TaskModel, TaskStatus } from "../../models/task.model";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 

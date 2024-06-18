@@ -1,4 +1,4 @@
-import { UserModel } from "./User.model";
+import { UserModel } from "./user.model";
 
 export interface TaskModel {
   id: string;

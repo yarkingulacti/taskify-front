@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MasterLayout } from "./components/layout/MasterLayout";
-import { FullscreenLoader } from "./components/layout/FullscreenLoader";
+import { MasterLayout } from "./components/layout/master";
+import { FullscreenLoader } from "./components/helpers/fullscreenLoader";
 import { Suspense, lazy } from "react";
+import { TaskDetail } from "./components/task/taskDetail";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home"));
-const PageNotFound = lazy(() => import("./pages/errors/PageNotFound"));
-const CreateTask = lazy(() => import("./components/task/CreateTask"));
+const PageNotFound = lazy(() => import("./pages/error/PageNotFound"));
+const CreateTask = lazy(() => import("./components/task/createTask"));
 const Tasks = lazy(() => import("./pages/Tasks"));
 const TaskCalendar = lazy(() => import("./pages/Calendar"));
 const Board = lazy(() => import("./pages/Board"));
@@ -25,12 +26,7 @@ function App() {
               key="taskCreate"
               element={<CreateTask />}
             />
-            <Route
-              //TODO - Create page, include detail, history
-              path="task/:id"
-              key="taskDetail"
-              element={<Home />}
-            />
+            <Route path="task/:id" key="taskDetail" element={<TaskDetail />} />
             <Route
               //TODO - Create page, include task detail, confirmation dialog
               path="task/:id/edit"

@@ -1,8 +1,8 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Sidebar } from "./menu/sidebar/Sidebar";
+import { Sidebar } from "./menu/sidebar/sidebar";
 import React from "react";
 import links from "./menu/links";
-import { SidebarItem } from "./menu/sidebar/SidebarItem";
+import { SidebarItem } from "./menu/sidebar/sidebarItem";
 
 export function MasterLayout() {
   const location = useLocation();

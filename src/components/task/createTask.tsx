@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { VscDiffAdded } from "react-icons/vsc";
 import { useFormik } from "formik";
-import { useTaskManager } from "../../contexts/TaskManager";
-import { TaskCreateModel } from "../../models/Task.model";
+import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
+import { TaskCreateModel } from "../../models/task.model";
 import classNames from "classnames";
-import useCustomStore from "../../stores/store";
+import useLoaderStore from "../../stores/loaders.store";
 import { RiLoader2Fill } from "react-icons/ri";
 
 const validationSchema = Yup.object().shape({
@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
 
 const CreateTask: React.FC = () => {
   const navigate = useNavigate();
-  const { isRestLoading, restLoading, restLoaded } = useCustomStore();
+  const { isRestLoading, restLoading, restLoaded } = useLoaderStore();
   const { createTask } = useTaskManager();
   const { errors, handleSubmit, handleChange, values, isValid } = useFormik({
     initialValues: {

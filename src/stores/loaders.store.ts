@@ -9,7 +9,7 @@ interface Store {
   pageLoaded: () => void;
 }
 
-const useCustomStore = create<Store>((set) => ({
+const useLoaderStore = create<Store>((set) => ({
   isPageLoading: false,
   isRestLoading: false,
   restLoading: () => {
@@ -26,4 +26,4 @@ const useCustomStore = create<Store>((set) => ({
   },
 }));
 
-export default useCustomStore;
+export default useLoaderStore;

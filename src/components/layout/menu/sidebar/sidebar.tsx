@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../../../assets/images/logo/logo-no-background.png";
-import { DefaultListRenderer } from "../../DefaultListRenderer";
+import { DefaultListRenderer } from "../../../helpers/defaultListRenderer";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar: React.FC<{

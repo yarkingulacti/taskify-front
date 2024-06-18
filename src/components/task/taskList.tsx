@@ -1,8 +1,8 @@
 import React from "react";
-import { useTaskManager } from "../../contexts/TaskManager";
-import Task from "./Task";
-import PageNotFound from "../../pages/errors/PageNotFound";
-import { Pagination } from "../common/pagination/Pagination";
+import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
+import Task from "./task";
+import PageNotFound from "../../pages/error/PageNotFound";
+import { Pagination } from "../pagination/Pagination";
 
 export const TaskList: React.FC = () => {
   const [page, setPage] = React.useState(1);
