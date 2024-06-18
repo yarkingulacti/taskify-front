@@ -20,6 +20,8 @@ Guess what? It's build with REACT!
   - [x] Dashboard View and Route
   - [ ] Backlog(AKA task board) View and Route (do it with draggable)
 - [x] Cardify Tasks.
+- [ ] Delete task
+- [ ] Edit task
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),
   - [ ] Related person,
@@ -30,12 +32,13 @@ Guess what? It's build with REACT!
   - [ ] Rich Text Editor text body,
   - [ ] Title,
   - [ ] Expected due date,
+- [ ] Task create step form
 - [ ] Dynamic page title
 - [ ] Breadcrumb to each page
 
 ## Backlog
 
-- [ ] Add task detail, have history of it here. (Seperate page)
+- [ ] Add task detail, have history timeline here. (Seperate page)
 - [ ] All Task done animated image, also a sound in addition.
 - [ ] Single Task done sound and animation.
 - [ ] Statistics;
