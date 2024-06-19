@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
 import { TaskCreateModel } from "../../models/task.model";
 import classNames from "classnames";
-import useLoaderStore from "../../stores/loaders.store";
+import { useLoaderStore } from "../../stores/loaders.store";
 import { RiLoader2Fill } from "react-icons/ri";
 
 const validationSchema = Yup.object().shape({

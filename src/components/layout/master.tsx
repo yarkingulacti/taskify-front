@@ -26,7 +26,10 @@ export function MasterLayout() {
           ))}
         />
       </aside>
-      <section className="p-12 flex-1 min-h-screen overflow-hidden">
+      <section
+        id="route-wrapper"
+        className="p-12 flex-1 min-h-screen overflow-hidden"
+      >
         <Outlet />
       </section>
     </main>

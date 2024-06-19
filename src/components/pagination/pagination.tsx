@@ -1,11 +1,13 @@
 import { BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
-import { PaginationProps } from "./types";
+import { PaginationProps } from "./type";
+import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
 
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
-  onPageChange,
 }) => {
+  const { setCurrentPage } = useTaskManager();
+
   function pageChange(direction: 1 | -1) {
     let newPage: number;
 
@@ -14,6 +16,8 @@ export const Pagination: React.FC<PaginationProps> = ({
     } else {
       newPage = currentPage - 1;
     }
+
+    console.log(newPage);
 
     switch (direction) {
       case -1:
@@ -24,7 +28,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         break;
     }
 
-    onPageChange(newPage);
+    setCurrentPage(newPage);
   }
 
   return (

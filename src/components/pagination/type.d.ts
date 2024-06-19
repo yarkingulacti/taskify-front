@@ -20,6 +20,4 @@ export interface PageMetadata {
   totalPages: number;
 }
 
-export interface PaginationProps extends PageMetadata {
-  onPageChange: (page: number) => void;
-}
+export interface PaginationProps extends PageMetadata {}

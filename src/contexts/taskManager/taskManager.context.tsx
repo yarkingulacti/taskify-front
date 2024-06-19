@@ -1,6 +1,6 @@
 import React from "react";
 import { TaskCreateModel, TaskModel } from "../../models/task.model";
-import { PaginationResponse } from "../../components/pagination/types";
+import { PaginationResponse } from "../../components/pagination/type";
 
 interface TaskManagerInterface {
   tasks: PaginationResponse<TaskModel>;

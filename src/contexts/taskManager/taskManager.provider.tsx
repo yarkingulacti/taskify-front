@@ -3,9 +3,10 @@ import axios from "axios";
 import { Icons, toast } from "react-toastify";
 import TaskManagerContext from "./taskManager.context";
 import { TaskCreateModel, TaskModel } from "../../models/task.model";
-import { PaginationResponse } from "../../components/pagination/types";
-
-axios.defaults.baseURL = import.meta.env.VITE_API_URL as string;
+import { PaginationResponse } from "../../components/pagination/type";
+import { useLoaderStore } from "../../stores/loaders.store";
+import _ from "lodash";
+import { ApiHelper } from "../../helpers/api.helper";
 
 export const TaskManagementProvider: React.FC<{
   children: React.ReactNode;
@@ -23,19 +24,20 @@ export const TaskManagementProvider: React.FC<{
     },
   });
 
+  const apiHelper = new ApiHelper(import.meta.env.VITE_API_URL as string);
+
+  const { restLoading, restLoaded } = useLoaderStore();
+
   async function fetchTasks() {
     setIsFetching(true);
+    // restLoading();
 
-    await axios<PaginationResponse<TaskModel>>({
-      method: "GET",
-      url: "/task/list",
-      params: {
-        take: pageSize,
-        skip: (currentPage - 1) * pageSize,
-      },
-    })
-      .then(({ data }) => {
-        setTasks(data);
+    const { data } = await apiHelper
+      .GET<PaginationResponse<TaskModel>>("/task/list", {
+        params: {
+          take: pageSize,
+          skip: (currentPage - 1) * pageSize,
+        },
       })
       .catch((error) => {
         toast(`${error}`, {
@@ -44,28 +46,29 @@ export const TaskManagementProvider: React.FC<{
           autoClose: 2500,
           type: "error",
         });
-      })
-      .finally(() => {
-        setIsFetching(false);
+
+        return {
+          data: {
+            items: [],
+            meta: {
+              currentPage: 0,
+              totalPages: 0,
+              currentPageSize: 0,
+              totalItemsCount: 0,
+            },
+          },
+        };
       });
+
+    setTasks(data);
+    setIsFetching(false);
   }
 
   async function createTask(data: TaskCreateModel) {
-    return axios<TaskModel>({
-      method: "POST",
-      url: "/task",
-      data,
-    })
-      .then(() => {
-        toast("Task created successfully", {
-          icon: Icons.success,
-          closeOnClick: false,
-          autoClose: 2500,
-          type: "success",
-        });
+    restLoading();
 
-        return fetchTasks();
-      })
+    await apiHelper
+      .POST<TaskModel, TaskCreateModel>("/task", data)
       .catch((error) => {
         if (error.response) {
           toast(
@@ -86,6 +89,15 @@ export const TaskManagementProvider: React.FC<{
           });
         }
       });
+    toast("Task created successfully", {
+      icon: Icons.success,
+      closeOnClick: false,
+      autoClose: 2500,
+      type: "success",
+    });
+
+    await fetchTasks();
+    restLoaded();
   }
 
   async function reFetch() {
