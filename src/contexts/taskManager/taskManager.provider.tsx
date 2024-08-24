@@ -1,11 +1,9 @@
 import React from "react";
-import axios from "axios";
 import { Icons, toast } from "react-toastify";
 import TaskManagerContext from "./taskManager.context";
 import { TaskCreateModel, TaskModel } from "../../models/task.model";
 import { PaginationResponse } from "../../components/pagination/type";
 import { useLoaderStore } from "../../stores/loaders.store";
-import _ from "lodash";
 import { ApiHelper } from "../../helpers/api.helper";
 
 export const TaskManagementProvider: React.FC<{
