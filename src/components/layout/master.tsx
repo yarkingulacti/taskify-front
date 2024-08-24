@@ -3,14 +3,29 @@ import { Sidebar } from "./menu/sidebar/sidebar";
 import React from "react";
 import links from "./menu/links";
 import { SidebarItem } from "./menu/sidebar/sidebarItem";
+import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
+import { useRouterHistoryManager } from "../../contexts/routerHistoryManager/routerHistoryManager.context";
 
 export function MasterLayout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { selectedTask, setSelectedTask } = useTaskManager();
+  const { setActiveRoute, previousRoute } = useRouterHistoryManager();
 
   React.useEffect(() => {
     if (location.pathname === "/") navigate("/dashboard");
   });
+
+  React.useEffect(() => {
+    setActiveRoute(location);
+
+    if (
+      previousRoute &&
+      previousRoute.state?.id &&
+      selectedTask?.id === previousRoute.state.id
+    )
+      setSelectedTask(null);
+  }, [location]);
 
   return (
     <main className="flex">

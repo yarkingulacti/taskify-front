@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MasterLayout } from "./components/layout/master";
 import { FullscreenLoader } from "./components/helpers/fullscreenLoader";
 import { Suspense, lazy } from "react";
-import { TaskDetail } from "./components/task/taskDetail";
+import TaskDetail from "./pages/TaskDetail";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home"));

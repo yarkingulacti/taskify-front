@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { TaskList } from "../components/task/taskList";
 import { VscDiffAdded } from "react-icons/vsc";
+import { Link } from "react-router-dom";
+import { TaskDetail as Detail } from "../components/task/taskDetail";
 
-const Tasks: React.FC = () => {
+const TaskDetail: React.FC = () => {
   return (
     <React.Fragment>
       <div id="breadcrumb" className="flex items-start justify-between mb-4">
         <h1 className="text-3xl font-semibold text-gray-800 underline underline-offset-4">
-          Dashboard {">"} Tasks
+          Tasks {">"} Task Detail
         </h1>
       </div>
       <div className="flex flex-col w-fulls items-start justify-between">
@@ -25,11 +25,11 @@ const Tasks: React.FC = () => {
           </Link>
         </div>
         <div className="w-full py-4 overflow-y-auto">
-          <TaskList />
+          <Detail />
         </div>
       </div>
     </React.Fragment>
   );
 };
 
-export default Tasks;
+export default TaskDetail;

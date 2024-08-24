@@ -29,7 +29,11 @@ const Task: React.FC<{
           <div className="flex justify-between items-center gap-2 mt-2">
             <div>
               <h3 className="mt-4 text-lg font-medium sm:text-xl">
-                <Link to={`/task/${data.id}`} className="hover:underline">
+                <Link
+                  to={`/task/${data.id}`}
+                  state={{ id: data.id }}
+                  className="hover:underline"
+                >
                   {data.title}
                 </Link>
               </h3>

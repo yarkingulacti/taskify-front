@@ -1,9 +1,9 @@
 import React from "react";
 import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
 import Task from "./task";
-import PageNotFound from "../layout/error/pageNotFound";
 import { Pagination } from "../pagination/pagination";
 import { useLoaderStore } from "../../stores/loaders.store";
+import DataNotFound from "../layout/error/dataNotFound";
 
 export const TaskList: React.FC = () => {
   const [page] = React.useState(1);
@@ -32,6 +32,6 @@ export const TaskList: React.FC = () => {
       <Pagination currentPage={page} totalPages={totalPages} />
     </React.Fragment>
   ) : (
-    <PageNotFound /> //TODO items not found component instead
+    <DataNotFound />
   );
 };

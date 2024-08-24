@@ -8,6 +8,8 @@ interface TaskManagerInterface {
   setPageSize: (size: number) => void;
   createTask: (task: TaskCreateModel) => Promise<void>;
   setCurrentPage: (page: number) => void;
+  setSelectedTask: (task: TaskModel | null) => void;
+  selectedTask: TaskModel | null;
 }
 
 const TaskManagerContext = React.createContext<

@@ -6,7 +6,6 @@ Guess what? It's build with REACT!
 
 - [ ] Task list pagination;
   - [ ] Page transition loader
-  - [ ] No item component
   - [ ] style paging component
   - [ ] fixed task list height
   - [ ] static paging component position
@@ -18,11 +17,7 @@ Guess what? It's build with REACT!
 ## Backlog
 
 - [ ] Add route pages for links
-  - [x] Calendar View and Route
   - [ ] History View and Route
-  - [x] Add Task View and Route
-  - [x] Tasks View and Route
-  - [x] Dashboard View and Route
   - [ ] Backlog(AKA task board) View and Route (do it with draggable)
 - [ ] More Task data;
   - [ ] Locations with labels (Map integration),
@@ -69,3 +64,8 @@ Guess what? It's build with REACT!
 - [x] Cardify Tasks.
 - [x] Backend integration.
 - [x] Overall convert a "To-do" to a "TASK". By changing name and concept.
+- [x] Calendar View and Route
+  - [x] Add Task View and Route
+  - [x] Tasks View and Route
+  - [x] Dashboard View and Route
+- [x] No item component
