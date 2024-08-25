@@ -37,9 +37,6 @@ const Task: React.FC<{
                   {data.title}
                 </Link>
               </h3>
-              {data.description && (
-                <p className="mt-1 text-sm text-gray-700">{data.description}</p>
-              )}{" "}
             </div>
 
             {data.status === TaskStatus.PENDING ? (

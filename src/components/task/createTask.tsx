@@ -8,6 +8,8 @@ import { TaskCreateModel } from "../../models/task.model";
 import classNames from "classnames";
 import { useLoaderStore } from "../../stores/loaders.store";
 import { RiLoader2Fill } from "react-icons/ri";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -30,6 +32,9 @@ const CreateTask: React.FC = () => {
     validateOnChange: true,
     validationSchema,
   });
+  function handleEditorChange(value: string) {
+    handleChange({ target: { name: "description", value } });
+  }
 
   function saveData(data: TaskCreateModel) {
     restLoading();
@@ -63,7 +68,7 @@ const CreateTask: React.FC = () => {
                   errors.title,
               }
             )}
-            placeholder="Enter title of the task"
+            placeholder="Enter the title of the task"
           />
         </div>
         <div className="w-full my-3">
@@ -73,21 +78,40 @@ const CreateTask: React.FC = () => {
           >
             Description
           </label>
-          <textarea
+          <ReactQuill
             id="description"
-            name="description"
             tabIndex={2}
-            value={values.description}
-            onChange={handleChange}
+            modules={{
+              toolbar: [
+                ["bold", "italic", "underline", "strike"], // toggled buttons
+                ["blockquote", "code-block"],
+                ["link", "image", "video", "formula"],
+
+                [{ header: 1 }, { header: 2 }], // custom button values
+                [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+                [{ script: "sub" }, { script: "super" }], // superscript/subscript
+                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                [{ direction: "rtl" }], // text direction
+
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+                [{ font: [] }],
+                [{ align: [] }],
+
+                ["clean"], // remove formatting button
+              ],
+            }}
             className={classNames(
               "p-2 w-full resize-none align-top sm:text-sm rounded-md shadow-md",
               {
                 "border-2 border-red-400 shadow-red-200": errors.description,
               }
             )}
-            rows={6}
-            placeholder="Enter description of the task (optional)"
-          ></textarea>
+            onChange={handleEditorChange}
+            value={values.description}
+            placeholder="Enter the description of the task"
+          />
         </div>
         <input type="submit" hidden />
         <div className="w-full flex justify-end mt-6">

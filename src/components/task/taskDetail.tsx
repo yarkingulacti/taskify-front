@@ -110,10 +110,10 @@ export const TaskDetail = () => {
             </h1>
           </div>
           <span className="bg-black block w-2/12 h-0.5 mb-6"></span>
-          <p className="text-3xl font-semibold">{selectedTask.description}</p>
-        </div>
-        <div className="h-96 w-full bg-yellow-300 flex items-center justify-center text-6xl">
-          IMAGE
+          <div
+            dangerouslySetInnerHTML={{ __html: selectedTask.description }}
+            className="text-3xl font-semibold"
+          ></div>
         </div>
       </div>
     </React.Fragment>

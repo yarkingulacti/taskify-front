@@ -21,15 +21,17 @@ Guess what? It's build with REACT!
   - [ ] History View and Route
   - [ ] Backlog(AKA task board) View and Route (do it with draggable)
 - [ ] More Task data;
-  - [ ] Locations with labels (Map integration),
-  - [ ] Related person,
-  - [ ] Reminders,
-  - [ ] Alarms,
+  - [x] Title,
+  - [ ] Rich Text Editor text body,
+  - [ ] Image
   - [ ] Tags,
   - [ ] Categories,
-  - [ ] Rich Text Editor text body,
-  - [ ] Title,
   - [ ] Expected due date,
+  - [ ] Reminders,
+  - [ ] Related person,
+  - [ ] Alarms, (chrome notifications)
+  - [ ] Locations with labels (Map integration),
+- [ ] Related person collections
 - [ ] Task create step form
 - [ ] Dynamic page title
 - [ ] Breadcrumb to each page
