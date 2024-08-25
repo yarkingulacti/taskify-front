@@ -2,13 +2,16 @@ import React from "react";
 import { VscDiffAdded } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { TaskDetail as Detail } from "../components/task/taskDetail";
+import { useTaskManager } from "../contexts/taskManager/taskManager.context";
 
 const TaskDetail: React.FC = () => {
+  const { selectedTask } = useTaskManager();
+
   return (
     <React.Fragment>
       <div id="breadcrumb" className="flex items-start justify-between mb-4">
         <h1 className="text-3xl font-semibold text-gray-800 underline underline-offset-4">
-          Tasks {">"} Task Detail
+          Tasks {">"} Task Detail {">"} {selectedTask?.title}
         </h1>
       </div>
       <div className="flex flex-col w-fulls items-start justify-between">

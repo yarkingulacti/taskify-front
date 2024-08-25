@@ -13,6 +13,7 @@ Guess what? It's build with REACT!
   - [ ] in task detail
   - [ ] in list
 - [ ] Edit task
+- [ ] Task title 50 letter limit
 
 ## Backlog
 
