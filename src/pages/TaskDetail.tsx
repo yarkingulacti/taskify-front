@@ -1,26 +1,18 @@
 import React from "react";
 import { VscChevronDown } from "react-icons/vsc";
 import { TaskDetail as Detail } from "../components/task/taskDetail";
+import classNames from "classnames";
 import { useTaskManager } from "../contexts/taskManager/taskManager.context";
+import { useLoaderStore } from "../stores/loaders.store";
+import { ApiHelper } from "../components/helpers/api.helper";
+import { TaskStatus } from "../models/task.model";
 
+const apiHelper = new ApiHelper();
 const TaskDetail: React.FC = () => {
   const statusDropdownRef = React.useRef<HTMLDivElement>(null);
 
-  const { selectedTask } = useTaskManager();
-
-  function toggleStatusDropdown(e?: React.MouseEvent<HTMLButtonElement>) {
-    e?.stopPropagation();
-
-    if (statusDropdownRef.current) {
-      statusDropdownRef.current.classList.toggle("hidden");
-      statusDropdownRef.current.classList.toggle("flex");
-      setTimeout(() => {
-        if (statusDropdownRef.current) {
-          statusDropdownRef.current.classList.toggle("opacity-0");
-        }
-      }, 100);
-    }
-  }
+  const { pageLoading, pageLoaded } = useLoaderStore();
+  const { selectedTask, setSelectedTask } = useTaskManager();
 
   React.useEffect(() => {
     function handler(e: MouseEvent) {
@@ -38,6 +30,46 @@ const TaskDetail: React.FC = () => {
       document.removeEventListener("click", handler);
     };
   }, []);
+
+  function toggleStatusDropdown(e?: React.MouseEvent<HTMLButtonElement>) {
+    e?.stopPropagation();
+
+    if (statusDropdownRef.current) {
+      statusDropdownRef.current.classList.toggle("hidden");
+      statusDropdownRef.current.classList.toggle("flex");
+      setTimeout(() => {
+        if (statusDropdownRef.current) {
+          statusDropdownRef.current.classList.toggle("opacity-0");
+        }
+      }, 100);
+    }
+  }
+
+  async function updateStatus(
+    e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+    status: TaskStatus
+  ) {
+    e.stopPropagation();
+
+    if (selectedTask?.status === status) return;
+    else if (selectedTask) {
+      pageLoading();
+
+      await apiHelper
+        .updateTaskStatus(selectedTask?.id as string, status)
+        .then((res) => {
+          if (res) {
+            setSelectedTask(res.data);
+            toggleStatusDropdown();
+          }
+        })
+        .finally(() => {
+          setTimeout(() => {
+            pageLoaded();
+          }, 500);
+        });
+    }
+  }
 
   return (
     <React.Fragment>
@@ -60,15 +92,41 @@ const TaskDetail: React.FC = () => {
             </span>
             <div
               ref={statusDropdownRef}
-              className="absolute border-black transition-all ease-in-out duration-100 hidden opacity-0 flex-col items-start py-2 font-semibold z-10 w-full mt-2 origin-top-right bg-white border-2 shadow-xl"
+              className="absolute border-black transition-all ease-in-out duration-100 hidden opacity-0 flex-col items-start font-semibold z-10 w-full bg-white border-2 shadow-xl rounded-lg mt-0.5"
             >
-              <span className="w-full mb-2 border-b-2 border-teal-400">
+              <span
+                onClick={(e) => updateStatus(e, TaskStatus.PENDING)}
+                className={classNames(
+                  "w-full py-1 border-b-2 border-black rounded-lg",
+                  {
+                    "bg-teal-400 text-white cursor-not-allowed italic":
+                      selectedTask?.status === TaskStatus.PENDING,
+                  }
+                )}
+              >
                 Pending
               </span>
-              <span className="w-full mb-2 border-b-2 border-teal-400">
+              <span
+                onClick={(e) => updateStatus(e, TaskStatus.IN_PROGRESS)}
+                className={classNames(
+                  "w-full py-1 border-b-2 border-black rounded-lg",
+                  {
+                    "bg-teal-400 text-white cursor-not-allowed":
+                      selectedTask?.status === TaskStatus.IN_PROGRESS,
+                  }
+                )}
+              >
                 In Progress
               </span>
-              <span className="w-full">Completed</span>
+              <span
+                onClick={(e) => updateStatus(e, TaskStatus.COMPLETED)}
+                className={classNames("w-full py-1 rounded-lg", {
+                  "bg-teal-400 text-white cursor-not-allowed":
+                    selectedTask?.status === TaskStatus.COMPLETED,
+                })}
+              >
+                Completed
+              </span>
             </div>
           </button>
         </div>

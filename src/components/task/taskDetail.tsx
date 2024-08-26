@@ -21,6 +21,8 @@ export const TaskDetail = () => {
       });
 
     return () => {
+      console.log("removing event listeners");
+
       setSelectedTask(null);
       if (tooltipRef.current) {
         tooltipRef.current.removeEventListener("mouseenter", tooltipIn);
@@ -34,7 +36,7 @@ export const TaskDetail = () => {
       tooltipRef.current.addEventListener("mouseenter", tooltipIn);
       tooltipRef.current.addEventListener("mouseleave", tooltipOut);
     }
-  }, [selectedTask]);
+  }, [selectedTask?.id]);
 
   function tooltipIn() {
     if (tooltipRef.current && tooltipContentRef.current) {
