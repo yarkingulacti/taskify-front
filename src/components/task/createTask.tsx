@@ -8,8 +8,11 @@ import { TaskCreateModel } from "../../models/task.model";
 import classNames from "classnames";
 import { useLoaderStore } from "../../stores/loaders.store";
 import { RiLoader2Fill } from "react-icons/ri";
-import ReactQuill from "react-quill";
+import ReactQuill, { Quill } from "react-quill";
+import QuillResizeImage from "quill-resize-image";
 import "react-quill/dist/quill.snow.css";
+
+Quill.register("modules/resize", QuillResizeImage);
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -82,6 +85,9 @@ const CreateTask: React.FC = () => {
             id="description"
             tabIndex={2}
             modules={{
+              resize: {
+                locale: {},
+              },
               toolbar: [
                 ["bold", "italic", "underline", "strike"], // toggled buttons
                 ["blockquote", "code-block"],
