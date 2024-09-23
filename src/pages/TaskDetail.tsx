@@ -1,6 +1,6 @@
 import React from "react";
 import { VscChevronDown } from "react-icons/vsc";
-import { TaskDetail as Detail } from "../components/task/taskDetail";
+import { TaskDetail as Detail } from "../components/task/task-detail";
 import classNames from "classnames";
 import { useTaskManager } from "../contexts/taskManager/taskManager.context";
 import { useLoaderStore } from "../stores/loaders.store";
@@ -100,7 +100,7 @@ const TaskDetail: React.FC = () => {
                   "w-full py-1 border-b-2 border-black rounded-lg",
                   {
                     "bg-teal-400 text-white cursor-not-allowed italic":
-                      selectedTask?.status === TaskStatus.PENDING,
+                      selectedTask?.status === TaskStatus.PENDING
                   }
                 )}
               >
@@ -112,7 +112,7 @@ const TaskDetail: React.FC = () => {
                   "w-full py-1 border-b-2 border-black rounded-lg",
                   {
                     "bg-teal-400 text-white cursor-not-allowed":
-                      selectedTask?.status === TaskStatus.IN_PROGRESS,
+                      selectedTask?.status === TaskStatus.IN_PROGRESS
                   }
                 )}
               >
@@ -122,7 +122,7 @@ const TaskDetail: React.FC = () => {
                 onClick={(e) => updateStatus(e, TaskStatus.COMPLETED)}
                 className={classNames("w-full py-1 rounded-lg", {
                   "bg-teal-400 text-white cursor-not-allowed":
-                    selectedTask?.status === TaskStatus.COMPLETED,
+                    selectedTask?.status === TaskStatus.COMPLETED
                 })}
               >
                 Completed

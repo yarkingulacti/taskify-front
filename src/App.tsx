@@ -9,7 +9,7 @@ const Home = lazy(() => import("./pages/Home"));
 const PageNotFound = lazy(
   () => import("./components/layout/error/pageNotFound")
 );
-const CreateTask = lazy(() => import("./components/task/createTask"));
+const CreateTask = lazy(() => import("./components/task/task-create"));
 const Tasks = lazy(() => import("./pages/Tasks"));
 const TaskCalendar = lazy(() => import("./pages/Calendar"));
 const Board = lazy(() => import("./pages/Board"));

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
-import Task from "./task";
+import Task from ".";
 import { Pagination } from "../pagination/pagination";
 import { useLoaderStore } from "../../stores/loaders.store";
 import DataNotFound from "../layout/error/dataNotFound";

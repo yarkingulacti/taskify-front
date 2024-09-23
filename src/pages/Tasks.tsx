@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TaskList } from "../components/task/taskList";
+import { TaskList } from "../components/task/task-list";
 import { VscDiffAdded } from "react-icons/vsc";
 
 const Tasks: React.FC = () => {
