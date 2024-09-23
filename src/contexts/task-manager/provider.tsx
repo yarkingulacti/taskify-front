@@ -1,9 +1,9 @@
 import React from "react";
-import TaskManagerContext from "./taskManager.context";
-import { useLoaderStore } from "../../stores/loaders.store";
-import { ApiHelper } from "../../components/helpers/api.helper";
+import TaskManagerContext from "./context";
+import { useLoaderStore } from "../../stores/loader-store";
+import { ApiHelper } from "../../components/helpers/api-helper";
 import { PaginationResponse } from "../../components/pagination/type";
-import { TaskCreateModel, TaskModel } from "../../models/task.model";
+import { TaskCreateModel, TaskModel } from "../../models/task-model";
 import { Icons, toast } from "react-toastify";
 
 const apiHelper = new ApiHelper();
@@ -28,8 +28,8 @@ export const TaskManagementProvider: React.FC<{
       currentPage: 0,
       totalPages: 0,
       currentPageSize: 0,
-      totalItemsCount: 0,
-    },
+      totalItemsCount: 0
+    }
   });
   /* ------------------------------------- */
   /**
@@ -56,7 +56,7 @@ export const TaskManagementProvider: React.FC<{
       icon: Icons.success,
       closeOnClick: false,
       autoClose: 2500,
-      type: "success",
+      type: "success"
     });
 
     restLoaded();
@@ -79,7 +79,7 @@ export const TaskManagementProvider: React.FC<{
         setCurrentPage,
         setPageSize,
         selectedTask,
-        setSelectedTask,
+        setSelectedTask
       }}
     >
       {children}

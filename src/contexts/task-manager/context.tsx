@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskCreateModel, TaskModel } from "../../models/task.model";
+import { TaskCreateModel, TaskModel } from "../../models/task-model";
 import { PaginationResponse } from "../../components/pagination/type";
 
 interface TaskManagerInterface {

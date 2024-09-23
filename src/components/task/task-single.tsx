@@ -1,7 +1,7 @@
 import React from "react";
 import { TfiTimer, TfiLightBulb, TfiCheckBox, TfiTime } from "react-icons/tfi";
 import { BsDot } from "react-icons/bs";
-import { TaskModel, TaskStatus } from "../../models/task.model";
+import { TaskModel, TaskStatus } from "../../models/task-model";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 
@@ -15,12 +15,12 @@ const Task: React.FC<{
         {
           "ring-yellow-300": data.status === TaskStatus.PENDING,
           "ring-blue-300": data.status === TaskStatus.IN_PROGRESS,
-          "ring-green-300": data.status === TaskStatus.COMPLETED,
+          "ring-green-300": data.status === TaskStatus.COMPLETED
         },
         {
           "bg-yellow-50": data.status === TaskStatus.PENDING,
           "bg-blue-50": data.status === TaskStatus.IN_PROGRESS,
-          "bg-green-50": data.status === TaskStatus.COMPLETED,
+          "bg-green-50": data.status === TaskStatus.COMPLETED
         }
       )}
     >

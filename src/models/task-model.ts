@@ -1,4 +1,4 @@
-import { UserModel } from "./user.model";
+import { UserModel } from "./user-model";
 
 export interface TaskModel {
   id: string;
@@ -18,5 +18,5 @@ export interface TaskCreateModel {
 export enum TaskStatus {
   PENDING = "PENDING",
   IN_PROGRESS = "IN_PROGRESS",
-  COMPLETED = "COMPLETED",
+  COMPLETED = "COMPLETED"
 }

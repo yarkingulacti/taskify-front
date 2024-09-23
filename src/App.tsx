@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MasterLayout } from "./components/layout/master";
-import { FullscreenLoader } from "./components/helpers/fullscreenLoader";
+import { FullscreenLoader } from "./components/helpers/fullscreen-loader";
 import { Suspense, lazy } from "react";
-import TaskDetail from "./pages/TaskDetail";
+import TaskDetail from "./pages/task-detail";
 
 // Lazy load components
-const Home = lazy(() => import("./pages/Home"));
+const Home = lazy(() => import("./pages"));
 const PageNotFound = lazy(
-  () => import("./components/layout/error/pageNotFound")
+  () => import("./components/layout/error/page-not-found")
 );
 const CreateTask = lazy(() => import("./components/task/task-create"));
-const Tasks = lazy(() => import("./pages/Tasks"));
-const TaskCalendar = lazy(() => import("./pages/Calendar"));
-const Board = lazy(() => import("./pages/Board"));
+const Tasks = lazy(() => import("./pages/task-list"));
+const TaskCalendar = lazy(() => import("./pages/calendar"));
+const Board = lazy(() => import("./pages/board"));
 
 function App() {
   return (

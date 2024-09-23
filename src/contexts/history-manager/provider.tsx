@@ -1,5 +1,5 @@
 import React from "react";
-import RouterHistoryContext from "./routerHistoryManager.context";
+import RouterHistoryContext from "./context";
 import { Location } from "react-router-dom";
 
 export const RouterHistoryManagerProvider: React.FC<{
@@ -23,7 +23,7 @@ export const RouterHistoryManagerProvider: React.FC<{
       value={{
         activeRoute,
         setActiveRoute,
-        previousRoute,
+        previousRoute
       }}
     >
       {children}

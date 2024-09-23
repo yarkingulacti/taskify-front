@@ -3,8 +3,8 @@ import { Sidebar } from "./menu/sidebar/sidebar";
 import React from "react";
 import links from "./menu/links";
 import { SidebarItem } from "./menu/sidebar/sidebarItem";
-import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
-import { useRouterHistoryManager } from "../../contexts/routerHistoryManager/routerHistoryManager.context";
+import { useTaskManager } from "../../contexts/task-manager/context";
+import { useRouterHistoryManager } from "../../contexts/history-manager/context";
 
 export function MasterLayout() {
   const location = useLocation();

@@ -2,10 +2,10 @@ import React from "react";
 import { VscChevronDown } from "react-icons/vsc";
 import { TaskDetail as Detail } from "../components/task/task-detail";
 import classNames from "classnames";
-import { useTaskManager } from "../contexts/taskManager/taskManager.context";
-import { useLoaderStore } from "../stores/loaders.store";
-import { ApiHelper } from "../components/helpers/api.helper";
-import { TaskStatus } from "../models/task.model";
+import { useTaskManager } from "../contexts/task-manager/context";
+import { useLoaderStore } from "../stores/loader-store";
+import { ApiHelper } from "../components/helpers/api-helper";
+import { TaskStatus } from "../models/task-model";
 
 const apiHelper = new ApiHelper();
 const TaskDetail: React.FC = () => {

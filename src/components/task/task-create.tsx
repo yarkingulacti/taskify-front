@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { VscDiffAdded } from "react-icons/vsc";
 import { useFormik } from "formik";
-import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
-import { TaskCreateModel } from "../../models/task.model";
+import { useTaskManager } from "../../contexts/task-manager/context";
+import { TaskCreateModel } from "../../models/task-model";
 import classNames from "classnames";
-import { useLoaderStore } from "../../stores/loaders.store";
+import { useLoaderStore } from "../../stores/loader-store";
 import { RiLoader2Fill } from "react-icons/ri";
 import ReactQuill, { Quill } from "react-quill";
 import QuillResizeImage from "quill-resize-image";
@@ -16,7 +16,7 @@ Quill.register("modules/resize", QuillResizeImage);
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
-  description: Yup.string().required("Description is required"),
+  description: Yup.string().required("Description is required")
 });
 
 const CreateTask: React.FC = () => {
@@ -26,14 +26,14 @@ const CreateTask: React.FC = () => {
   const { errors, handleSubmit, handleChange, values, isValid } = useFormik({
     initialValues: {
       title: "",
-      description: "",
+      description: ""
     },
     onSubmit: (values) => {
       saveData(values);
     },
     validateOnBlur: true,
     validateOnChange: true,
-    validationSchema,
+    validationSchema
   });
   function handleEditorChange(value: string) {
     handleChange({ target: { name: "description", value } });
@@ -67,8 +67,7 @@ const CreateTask: React.FC = () => {
             className={classNames(
               "w-full p-2 shadow-md border border-gray-300 rounded-md",
               {
-                "border-2 border-red-400 shadow-md shadow-red-200":
-                  errors.title,
+                "border-2 border-red-400 shadow-md shadow-red-200": errors.title
               }
             )}
             placeholder="Enter the title of the task"
@@ -86,7 +85,7 @@ const CreateTask: React.FC = () => {
             tabIndex={2}
             modules={{
               resize: {
-                locale: {},
+                locale: {}
               },
               toolbar: [
                 ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -105,13 +104,13 @@ const CreateTask: React.FC = () => {
                 [{ font: [] }],
                 [{ align: [] }],
 
-                ["clean"], // remove formatting button
-              ],
+                ["clean"] // remove formatting button
+              ]
             }}
             className={classNames(
               "p-2 w-full resize-none align-top sm:text-sm rounded-md shadow-md",
               {
-                "border-2 border-red-400 shadow-red-200": errors.description,
+                "border-2 border-red-400 shadow-red-200": errors.description
               }
             )}
             onChange={handleEditorChange}
@@ -128,7 +127,7 @@ const CreateTask: React.FC = () => {
             className={classNames(
               "group relative inline-block focus:outline-none focus:ring",
               {
-                "cursor-not-allowed opacity-50": !isValid,
+                "cursor-not-allowed opacity-50": !isValid
               }
             )}
           >
@@ -137,7 +136,7 @@ const CreateTask: React.FC = () => {
                 "absolute inset-0 translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-0 group-hover:translate-y-0",
                 {
                   "bg-yellow-300": isValid,
-                  "bg-gray-400": !isValid,
+                  "bg-gray-400": !isValid
                 }
               )}
             ></span>

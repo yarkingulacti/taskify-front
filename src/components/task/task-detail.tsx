@@ -1,8 +1,8 @@
 import React from "react";
-import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
-import { ApiHelper } from "../helpers/api.helper";
+import { useTaskManager } from "../../contexts/task-manager/context";
+import { ApiHelper } from "../helpers/api-helper";
 import { useLocation } from "react-router-dom";
-import { TaskStatus } from "../../models/task.model";
+import { TaskStatus } from "../../models/task-model";
 import classNames from "classnames";
 import { TfiCheckBox, TfiLightBulb, TfiTimer } from "react-icons/tfi";
 import moment from "moment";
@@ -104,8 +104,7 @@ export const TaskDetail = () => {
                     "bg-yellow-300": selectedTask.status === TaskStatus.PENDING,
                     "bg-blue-300":
                       selectedTask.status === TaskStatus.IN_PROGRESS,
-                    "bg-green-300":
-                      selectedTask.status === TaskStatus.COMPLETED,
+                    "bg-green-300": selectedTask.status === TaskStatus.COMPLETED
                   }
                 )}
               ></span>

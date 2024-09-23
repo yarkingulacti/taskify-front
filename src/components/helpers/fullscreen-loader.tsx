@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import _ from "lodash";
 import Typed from "typed.js";
-import { useLoaderStore } from "../../stores/loaders.store";
+import { useLoaderStore } from "../../stores/loader-store";
 
 export const FullscreenLoader: React.FC = () => {
   const { isPageLoading, pageLoading, pageLoaded } = useLoaderStore();
@@ -25,7 +25,7 @@ export const FullscreenLoader: React.FC = () => {
         strings: ["Loading...", "Please wait..."],
         showCursor: false,
         typeSpeed: 50,
-        loop: true,
+        loop: true
       });
 
       typed.current.start();

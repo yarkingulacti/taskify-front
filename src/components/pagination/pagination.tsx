@@ -1,10 +1,10 @@
 import { BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
 import { PaginationProps } from "./type";
-import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
+import { useTaskManager } from "../../contexts/task-manager/context";
 
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
-  totalPages,
+  totalPages
 }) => {
   const { setCurrentPage } = useTaskManager();
 

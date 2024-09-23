@@ -1,9 +1,9 @@
 import React from "react";
-import { useTaskManager } from "../../contexts/taskManager/taskManager.context";
-import Task from ".";
+import { useTaskManager } from "../../contexts/task-manager/context";
+import Task from "./task-single";
 import { Pagination } from "../pagination/pagination";
-import { useLoaderStore } from "../../stores/loaders.store";
-import DataNotFound from "../layout/error/dataNotFound";
+import { useLoaderStore } from "../../stores/loader-store";
+import DataNotFound from "../layout/error/data-not-found";
 
 export const TaskList: React.FC = () => {
   const [page] = React.useState(1);
@@ -19,7 +19,12 @@ export const TaskList: React.FC = () => {
   }, [tasks]);
 
   return tasks.items?.length ? (
-    <React.Fragment>
+    <div
+      className="flex flex-col justify-between"
+      style={{
+        minHeight: "calc(100vh - 18rem)"
+      }}
+    >
       {isRestLoading ? (
         <h1>Loading</h1>
       ) : (
@@ -30,7 +35,7 @@ export const TaskList: React.FC = () => {
         </ol>
       )}
       <Pagination currentPage={page} totalPages={totalPages} />
-    </React.Fragment>
+    </div>
   ) : (
     <DataNotFound />
   );

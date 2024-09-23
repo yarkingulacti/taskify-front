@@ -4,8 +4,8 @@ import { PaginationResponse } from "../pagination/type";
 import {
   TaskCreateModel,
   TaskModel,
-  TaskStatus,
-} from "../../models/task.model";
+  TaskStatus
+} from "../../models/task-model";
 
 /**
  * A helper class to make API requests with HTTP methods using `axios`
@@ -64,14 +64,14 @@ export class ApiHelper {
     return this.GET<PaginationResponse<TaskModel>>("/task", {
       params: {
         take: pageSize,
-        skip: (currentPage - 1) * pageSize,
-      },
+        skip: (currentPage - 1) * pageSize
+      }
     }).catch((error) => {
       toast(`${error}`, {
         icon: Icons.error,
         closeOnClick: false,
         autoClose: 2500,
-        type: "error",
+        type: "error"
       });
 
       return {
@@ -81,9 +81,9 @@ export class ApiHelper {
             currentPage: 0,
             totalPages: 0,
             currentPageSize: 0,
-            totalItemsCount: 0,
-          },
-        },
+            totalItemsCount: 0
+          }
+        }
       };
     });
   }
@@ -98,7 +98,7 @@ export class ApiHelper {
               icon: Icons.error,
               closeOnClick: false,
               autoClose: 2500,
-              type: "error",
+              type: "error"
             }
           );
         } else {
@@ -106,7 +106,7 @@ export class ApiHelper {
             icon: Icons.error,
             closeOnClick: false,
             autoClose: 2500,
-            type: "error",
+            type: "error"
           });
         }
       }
@@ -121,20 +121,20 @@ export class ApiHelper {
         icon: Icons.error,
         closeOnClick: false,
         autoClose: 2500,
-        type: "error",
+        type: "error"
       });
     }
   }
 
   async updateTaskStatus(id: string, status: TaskStatus) {
     return this.PUT<TaskModel, { status: TaskStatus }>(`/task/${id}/status`, {
-      status,
+      status
     }).catch((error) => {
       toast(`${error}`, {
         icon: Icons.error,
         closeOnClick: false,
         autoClose: 2500,
-        type: "error",
+        type: "error"
       });
     });
   }
